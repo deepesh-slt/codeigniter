@@ -1,6 +1,7 @@
         <?= form_open('form/login'); ?>
             <p class="login-error">
                 <?= $this->session->flashdata('login_error'); ?>
+                <?= $this->session->flashdata('delete_account_message'); ?>
             </p>
             <div class="group">
                 <input type="text" name="login_username" value="<?= $this->session->flashdata('username_value'); ?>"/>

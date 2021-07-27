@@ -249,6 +249,7 @@ p.error{
     right: 1rem;
     top: 1rem;
     display: flex;
+    z-index: 1;
 }
 
 .changing-buttons *{
@@ -260,4 +261,45 @@ p.error{
     padding: 0.5rem 1rem;
     color: #fff;
     text-decoration: none;
+}
+
+.confirm-delete-wrapper{
+    position: fixed;
+    z-index: 1050;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background-color: rgba(0,0,0,0.4);
+    display: none;
+    align-items: center;
+    justify-content: center;
+    padding: 0rem 1rem;
+}
+
+.confirm-delete-wrapper .confirm-delete{
+    background-color: #fff;
+    padding: 1.5rem 1rem;
+    width: 100%;
+    max-width: 400px;
+}
+
+.confirm-delete-wrapper .confirm-delete p{
+    margin: 1em 0.25rem 2.5rem;
+}
+
+.confirm-delete-wrapper .confirm-delete .delete-btn-wrapper{
+    display: flex;
+    margin: 0rem -1rem -1.5rem;
+    padding: 1rem;
+    background-color: #e9e9e9;
+}
+
+.confirm-delete-wrapper .confirm-delete a{
+    width: 50%;
+    text-align: center;
+}
+
+.confirm-delete-wrapper .confirm-delete a:first-child{
+    margin-right: 1rem;
 }

@@ -1,44 +1,55 @@
         <div class="changing-buttons">
             <?= anchor('form/logout', 'Logout', array('class' => 'logout-btn buttonBlue')); ?>
-            <?= anchor("form/delete_account/".$this->session->username.'', 'Delete Account', array('class' => 'delete-btn buttonRed')); ?>
+            <?= anchor('#', 'Delete Account', array('class' => 'delete-btn buttonRed', 'id'=>'account_deletion_confirmation')); ?>
+            <?= anchor('form/gallery', 'Your Gallery', array('class' => 'logout-btn buttonBlue')); ?>
+        </div>
+
+        <!-- Confirm Delete Account -->
+        <div id="confirm-delete-wrapper" class="confirm-delete-wrapper">
+            <div class="confirm-delete">
+                <p>Are You Sure Want To Delete Your Account ?</p>
+                <div class="delete-btn-wrapper">
+                    <?= anchor('form/delete_account/'.$userdata['username'], 'Delete', array('class' => 'delete-btn buttonRed')); ?>
+                    <?= anchor('#', 'No', array('class' => 'logout-btn buttonBlue', 'id'=>'account_deletion_cancel')); ?>
+                </div>
+            </div>
         </div>
 
         <?= form_open_multipart('form/profile'); ?>
             <p class="error">
-                <?= empty($_SESSION['delete_account_message']) ? '' : $_SESSION['delete_account_message']; ?>
-                <?= empty($_SESSION['update_account_message']) ? '' : $_SESSION['update_account_message']; ?>
+                <?= $this->session->flashdata('update_account_message'); ?>
             </p>
 
             <div class="group">
                 <div class="profile-pic">
                         
-                    <img alt="<?= empty($userdata['fullname']) ? '' : $userdata['fullname']; ?>" title="<?= empty($userdata['fullname']) ? '' : $userdata['fullname']; ?>" src="file:///<?= empty($userdata['profile_pic']) ? '' : $userdata['profile_pic']; ?>" id="profile-image">
+                    <img alt="<?= $userdata['fullname']; ?>" title="<?= $userdata['fullname']; ?>" src="<?= $userdata['profile_pic']; ?>" id="profile-image">
                     <input id="profile-image-upload" class="hidden" type="file" name="profile_pic">
                         
                 </div>
 
-                <p class="error" style="text-align: center;"><?= empty($_SESSION['profile_pic_error_message']) ? '' : $_SESSION['profile_pic_error_message']; ?></p>
+                <?= form_error('profile_pic'); ?>
             </div>
 
             <div class="group">
 
-                <input id="name" type="text" name="fullname" value="<?= empty($userdata['fullname']) ? '' : $userdata['fullname']; ?>" />
+                <input id="name" type="text" name="fullname" value="<?= $userdata['fullname']; ?>" />
                 <span class="highlight"></span><span class="bar"></span>
 
                 <label for="name">Full Name</label>
 
-                <p class="error"><?= empty($_SESSION['fullname_error_message']) ? '' : $_SESSION['fullname_error_message']; ?></p>
+                <?= form_error('fullname'); ?>
 
             </div>
 
             <div class="group">
 
-                <input id="username" type="text" name="username" value="<?= empty($userdata['username']) ? '' : $userdata['username']; ?>" />
+                <input id="username" type="text" name="username" value="<?= $userdata['username']; ?>" />
                 <span class="highlight"></span><span class="bar"></span>
 
                 <label for="username">Username</label>
 
-                <p class="error"><?= empty($_SESSION['username_error_message']) ? '' : $_SESSION['username_error_message']; ?></p>
+                <?= form_error('username'); ?>
 
             </div>
 
@@ -46,12 +57,12 @@
 
             <div class="group">
 
-                <input id="email" type="text" name="email" value="<?= empty($userdata['email']) ? '' : $userdata['email']; ?>" />
+                <input id="email" type="text" name="email" value="<?= $userdata['email']; ?>" />
                 <span class="highlight"></span><span class="bar"></span>
 
                 <label for="email">Email Id</label>
 
-                <p class="error"><?= empty($_SESSION['email_error_message']) ? '' : $_SESSION['email_error_message']; ?></p>
+                <?= form_error('email'); ?>
 
             </div>
 
@@ -66,7 +77,7 @@
                 <input id="other" type="radio" name="gender" value="other"  <?= $userdata['gender'] == 'other' ? 'checked' : ''; ?>/>
                 <label for="other">Other</label>
 
-                <p class="error"><?= empty($_SESSION['gender_error_message']) ? '' : $_SESSION['gender_error_message']; ?></p>
+                <?= form_error('gender'); ?>
                 
             </div>
 
@@ -78,7 +89,7 @@
 
                 <label for="password">Password</label>
 
-                <p class="error"><?= empty($_SESSION['password_error_message']) ? 'type password to continue' : $_SESSION['password_error_message']; ?></p>
+                <?= empty(form_error('password')) ? '<p class="error">type password to continue</p>' : form_error('password'); ?>
 
             </div>
 

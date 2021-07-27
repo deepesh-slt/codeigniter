@@ -16,8 +16,10 @@
 
             $this->db->select('username, id');
             $this->db->from($this->tb_name);
+            $this->db->group_start();
             $this->db->where('username =', $username);
             $this->db->or_where('email =', $username);
+            $this->db->group_end();
             $this->db->where('id =', $user_id);
 
             $query = $this->db->get();
@@ -92,5 +94,29 @@
             }
 
             return $return_data;
+        }
+
+        public function update_userdata($data) {
+            $this->db->where('id =', $this->session->user_id);
+
+            if ($this->db->update($this->tb_name, $data)) {
+                $return_data['username'] = $data['username'];
+            } else {
+                $return_data = $this->db->display_error();
+            }
+
+            return $return_data;
+        }
+
+        public function delete_user_account($username, $id)
+        {
+            $this->db->where('username =', $username);
+            $this->db->where('id =', $id);
+
+            if ($this->db->delete($this->tb_name)) {
+                return TRUE;
+            } else {
+                return FALSE;
+            }
         }
     }
