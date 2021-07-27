@@ -51,9 +51,13 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 */
 
 // News Controller Routing
+$route['news'] = 'news/index';
 $route['news/create'] = 'news/create';
 $route['news/(:any)'] = 'news/view/$1';
-$route['news'] = 'news/index';
+
+// Form Data
+$route['form'] = 'form/form_controller/index';
+$route['form/(:any)'] = 'form/form_controller/$1';
 
 // Pages controller Routing
 $route['pages/(:any)'] = 'pages/$1';

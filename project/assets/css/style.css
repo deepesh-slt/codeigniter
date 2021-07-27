@@ -1,0 +1,263 @@
+*, *::before, *::after{
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Helvetica;
+    background: #eee;
+    -webkit-font-smoothing: antialiased;
+}
+header {
+    text-align: center;
+    margin-top: 4em;
+}
+
+h1 {
+    font-weight: 300;
+    color: #636363;
+}
+
+form, .login-data {
+    position: relative;
+    width: 100%;
+    max-width: 450px;
+    margin: 4em auto;
+    padding: 4em 2em 2em;
+    background: #fafafa;
+    border: 1px solid #ebebeb;
+    box-shadow: rgba(0, 0, 0, 0.14902) 0px 1px 1px 0px, rgba(0, 0, 0, 0.09804) 0px 1px 2px 0px;
+}
+
+.group-data{
+    margin: 0rem 0rem 1rem;
+    display: flex;
+}
+
+.name{
+    margin-right: 0.25rem;
+}
+
+.group {
+    position: relative;
+    margin-bottom: 45px;
+}
+
+input:not([type=checkbox]):not([type=radio]):not([type=submit]) {
+    font-size: 18px;
+    padding: 10px 10px 10px 5px;
+    -webkit-appearance: none;
+    display: block;
+    background: #fafafa;
+    color: #636363;
+    width: 100%;
+    border: none;
+    border-radius: 0;
+    border-bottom: 1px solid #757575;
+}
+
+input:not([type=checkbox]):not([type=radio]):not([type=submit]):focus {
+    outline: none;
+}
+
+label{
+    color: #999;
+    font-size: 18px;
+    font-weight: normal;
+}
+
+input:not([type=checkbox]):not([type=radio]):not([type=submit]) ~ label {
+    position: absolute;
+    pointer-events: none;
+    left: 5px;
+    top: 10px;
+    transition: all 0.2s ease;
+}
+
+input:not([type=checkbox]):not([type=radio]):not([type=submit]):focus ~ label,
+input:not([type=checkbox]):not([type=radio]):not([type=submit]):valid ~ label {
+    top: -20px;
+    transform: scale(0.75);
+    left: -2px;
+    color: #4a89dc;
+}
+
+.profile-pic{
+    height:120px;
+    width:120px;
+    margin: 0rem auto;
+    padding: 10px;
+}
+
+.profile-pic img{
+    border-radius: 50%;
+    box-shadow: 0px 0px 5px 0px #c1c1c1;
+    cursor: pointer;
+    width: 100px;
+    height: 100px;
+}   
+
+.hidden{
+    display: none!important;
+}
+
+.row{
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.col-2{
+    width: 100%;
+    padding-left: 15px;
+    padding-right: 15px;
+    max-width: 16.66%;
+}
+
+.image{
+    background-color: #fff;
+    margin: 1rem 0rem;
+}
+
+.img-fluid{
+    max-width: 100%;
+}
+
+.bar {
+    position: relative;
+    display: block;
+    width: 100%;
+}
+
+.bar:before,
+.bar:after {
+    content: "";
+    height: 2px;
+    width: 0;
+    bottom: 1px;
+    position: absolute;
+    background: #4a89dc;
+    transition: all 0.2s ease;
+}
+
+.bar:before {
+    left: 50%;
+}
+
+.bar:after {
+    right: 50%;
+}
+
+input:not([type=checkbox]):not([type=radio]):not([type=submit]):focus ~ .bar:before,
+input:not([type=checkbox]):not([type=radio]):not([type=submit]):focus ~ .bar:after {
+    width: 50%;
+}
+
+.highlight {
+    position: absolute;
+    height: 60%;
+    width: 100px;
+    top: 25%;
+    left: 0;
+    pointer-events: none;
+    opacity: 0.5;
+}
+input:not([type=checkbox]):not([type=radio]):not([type=submit]):focus ~ .highlight {
+    animation: inputHighlighter 0.3s ease;
+}
+
+@keyframes inputHighlighter {
+    from {
+        background: #4a89dc;
+    }
+    to {
+        width: 0;
+        background: transparent;
+    }
+}
+
+.button {
+    position: relative;
+    display: inline-block;
+    padding: 12px 24px;
+    margin: 0.3em 0 1em 0;
+    width: 100%;
+    vertical-align: middle;
+    color: #fff;
+    font-size: 16px;
+    line-height: 20px;
+    -webkit-font-smoothing: antialiased;
+    text-align: center;
+    letter-spacing: 1px;
+    background: transparent;
+    border: 0;
+    border-bottom: 2px solid transparent;
+    cursor: pointer;
+    transition: all 0.15s ease;
+}
+.button:focus {
+    outline: 0;
+}
+
+.buttonBlue {
+    background: #4a89dc;
+    border-color: #3160b6;
+    text-shadow: 1px 1px 0 rgba(39, 110, 204, 0.5);
+}
+
+.buttonBlue:hover {
+    background: #357bd8;
+}
+
+.buttonRed {
+    background: #dc4a4a;
+    border-color: #b63131;
+    text-shadow: 1px 1px 0 rgba(204, 39, 39, 0.5);
+}
+
+.buttonRed:hover {
+    background: #b63131;
+}
+
+.buttonGreen {
+    background: #4adc76;
+    border-color: #31b631;
+    text-shadow: 1px 1px 0 rgba(44, 204, 39, 0.5);
+}
+
+.buttonGreen:hover {
+    background: #35d83d;
+}
+
+p.error{
+    margin: 0.5rem 0.25rem 0rem;
+    color: red;
+    font-size: 14px;
+}
+
+.login-error, form>.error{
+    color: red;
+    position: absolute;
+    left: 2em;
+    right: 2em;
+    text-align: center;
+    top: 1em;
+    /* transform: translateY(-50%); */
+    margin: 0rem;
+}
+
+.changing-buttons{
+    position: fixed;
+    right: 1rem;
+    top: 1rem;
+    display: flex;
+}
+
+.changing-buttons *{
+    margin: 0.25rem;
+}
+
+
+.logout-btn, .delete-btn{
+    padding: 0.5rem 1rem;
+    color: #fff;
+    text-decoration: none;
+}
