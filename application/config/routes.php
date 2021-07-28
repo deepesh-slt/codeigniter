@@ -58,6 +58,7 @@ $route['news/(:any)'] = 'news/view/$1';
 // Form Data
 $route['form'] = 'form/form_controller/index';
 $route['form/delete_account/(:any)'] = 'form/form_controller/delete_account/$1';
+$route['form/delete_image/(:any)'] = 'form/form_controller/delete_image/$1';
 $route['form/(:any)'] = 'form/form_controller/$1';
 
 // Pages controller Routing

@@ -109,12 +109,69 @@ input:not([type=checkbox]):not([type=radio]):not([type=submit]):valid ~ label {
     width: 100%;
     padding-left: 15px;
     padding-right: 15px;
-    max-width: 16.66%;
+    max-width: 12.5%;
+}
+
+@media (max-width: 1599px) {
+    .col-2{
+        max-width: 16.66%;
+    }
+}
+
+@media (max-width: 1199px) {
+    .col-2{
+        max-width: 20%;
+    }
+}
+
+@media (max-width: 991px) {
+    .col-2{
+        max-width: 25%;
+    }
+}
+
+@media (max-width: 767px) {
+    .col-2{
+        max-width: 33.33%;
+    }
+}
+
+@media (max-width: 575px) {
+    .col-2{
+        max-width: 50%;
+    }
 }
 
 .image{
     background-color: #fff;
+    display: flex;
+    flex-wrap: wrap;
     margin: 1rem 0rem;
+    padding: 1rem;
+    height: calc(100% - 2rem);
+    align-content: space-between;
+    border-radius: 0.375rem;
+}
+
+.image img{
+    margin: 0rem auto;
+}
+
+.image a{
+    width: 100%;
+    max-width: 200px;
+    text-align: center;
+    margin: 1rem auto 0rem;
+    display: inline-block;
+    padding: 0.75rem 0.5rem;
+    background-color: #dc4a4a;
+    border-radius: 0.375rem;
+    color: #fff;
+    text-decoration: none;
+}
+
+.image a:hover{
+    background-color: #b63131;
 }
 
 .img-fluid{

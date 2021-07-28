@@ -5,7 +5,7 @@
             $this->load->helper(array('url', 'form'));
             $this->load->library('session');
             $this->load->model('form/form_model');
-            $this->output->enable_profiler(TRUE);
+            // $this->output->enable_profiler(TRUE);
         }
 
         public function index() {
@@ -30,7 +30,7 @@
         public function login() {
 
             // Check Login Form Credentials
-            if (isset($_POST['login'])) {
+            if (!empty($_POST['login'])) {
                 if ($userdata = $this->form_model->login_check($this->input->post('login_username'), md5($this->input->post('password')))) {
                     $this->session->username = $userdata['username'];
                     $this->session->user_id = $userdata['id'];
@@ -63,8 +63,8 @@
 
             // Handle Registration Form Data
             do {
-                if (isset($_POST['registration'])) {
-                    $data = $this->input->post();
+                if (!empty($_POST['registration'])) {
+                    $userdata = $this->input->post();
     
                     $this->load->library(array('form_validation' => 'fv'));
     
@@ -111,10 +111,9 @@
 
                     // File Upload
                     $config['upload_path'] = 'assets/profile';
-                    $data['profile_pic'] = base_url($config['upload_path'].'/');
+                    $userdata['profile_pic'] = $config['upload_path'].'/';
     
                     if ($_FILES['profile_pic']['error'] == 0) {
-                        print_r($_FILES);die;
                         $config['allowed_types']        = 'gif|jpg|png';
                         $config['max_size']             = 2048;
                         $config['overwrite']             = FALSE;
@@ -122,21 +121,21 @@
                         $this->load->library('upload', $config);
     
                         if ($this->upload->do_upload('profile_pic')) {
-                            $data['profile_pic'] .= $this->upload->data('file_name');
+                            $userdata['profile_pic'] .= $this->upload->data('file_name');
     
                         } else {
                             $data['profile_pic_error'] = $this->upload->display_errors();
                             break;
                         }
                     } else {
-                        $data['profile_pic'] .= 'default-profile.png';
+                        $userdata['profile_pic'] .= 'default-profile.png';
                     }
                     
-                    $data['password'] = md5($data['password']);
-                    unset($data['cpassword']);
-                    unset($data['registration']);
+                    $userdata['password'] = md5($userdata['password']);
+                    unset($userdata['cpassword']);
+                    unset($userdata['registration']);
     
-                    $insert = $this->form_model->sign_up($data);
+                    $insert = $this->form_model->sign_up($userdata);
                     
                     if (!empty($insert['id'])) {
                         $this->session->username = $insert['username'];
@@ -168,9 +167,9 @@
         public function profile() {
 
             // Handle Update Form Data
-            if (isset($_POST['update'])) {
+            if (!empty($_POST['update'])) {
                 do {
-                    $data = $this->input->post();
+                    $userdata = $this->input->post();
         
                     $this->load->library(array('form_validation' => 'fv'));
     
@@ -211,7 +210,7 @@
     
                     // File Upload
                     $config['upload_path'] = 'assets/profile';
-                    $data['profile_pic'] = base_url($config['upload_path'].'/');
+                    $userdata['profile_pic'] = $config['upload_path'].'/';
     
                     if ($_FILES['profile_pic']['error'] == 0) {
                         $config['allowed_types']        = 'jpeg|jpg|png';
@@ -221,20 +220,20 @@
                         $this->load->library('upload', $config);
     
                         if ($this->upload->do_upload('profile_pic')) {
-                            $data['profile_pic'] .= $this->upload->data('file_name');
+                            $userdata['profile_pic'] .= $this->upload->data('file_name');
     
                         } else {
                             $data['profile_pic_error'] = $this->upload->display_errors('<p class="error" style="text-align: center;">', '</p>');
                             break;
                         }
                     } else {
-                        $data['profile_pic'] = $this->form_model->get_userdata('profile_pic')['profile_pic'];
+                        $userdata['profile_pic'] = $this->form_model->get_userdata('profile_pic')['profile_pic'];
                     }   
     
-                    unset($data['update']);
-                    unset($data['password']);
+                    unset($userdata['update']);
+                    unset($userdata['password']);
     
-                    $update = $this->form_model->update_userdata($data);
+                    $update = $this->form_model->update_userdata($userdata);
                     
                     if (!empty($update['username'])) {
                         $this->session->username = $update['username'];
@@ -271,6 +270,46 @@
             // Load Gallery Model
             $this->load->model('form/user_gallery_model', 'user_gallery');
 
+            if (!empty($_POST['upload_gallery'])) {
+
+                do {
+                    if (!empty($_FILES['gallery']['name'][0])){
+
+                        foreach ($_FILES['gallery']['name'] as $key => $value) {
+                            $_FILES['gallery_image']['name'] = $_FILES['gallery']['name'][$key];
+                            $_FILES['gallery_image']['type'] = $_FILES['gallery']['type'][$key];
+                            $_FILES['gallery_image']['tmp_name'] = $_FILES['gallery']['tmp_name'][$key];
+                            $_FILES['gallery_image']['error'] = $_FILES['gallery']['error'][$key];
+                            $_FILES['gallery_image']['size'] = $_FILES['gallery']['size'][$key];
+
+                            $config['upload_path'] = 'assets/gallery';
+                            $config['allowed_types'] = 'jpeg|jpg|png';
+                            $config['max_size'] = 2048;
+                            $config['overwrite'] = FALSE;
+        
+                            $userdata['image_path'] = $config['upload_path'].'/';
+    
+                            $this->load->library('upload', $config);
+        
+                            if ($this->upload->do_upload('gallery_image')) {
+                                $userdata['image_path'] .= $this->upload->data('file_name');
+                            } else {
+                                $data['gallery_error_message'] = $this->upload->display_errors('<p class="error" style="text-align: center;">', '</p>');
+                                break;
+                            }
+
+                            if ($this->user_gallery->insert_image($userdata)) {
+                                $data['gallery_message'] = 'Files Uploaded Successfully';
+                            } else {
+                                $data['gallery_message'] = 'Error Uploading Files';
+                            }
+                        }
+    
+                    }
+                } while (0);
+
+            }
+
             // Session Check
             if ($this->session->has_userdata('logged_in')) {
                 if ($this->session->logged_in === TRUE) {
@@ -285,7 +324,7 @@
             }
 
             // Gallery Page View
-            $data['title'] = 'My Account';
+            $data['title'] = 'My Gallery';
             $data['userdata'] = $this->user_gallery->get_gallery_data();
             $this->load->view('form/header', $data);
             $this->load->view('form/user_gallery', $data);
@@ -330,6 +369,36 @@
                 $this->session->unset_userdata('logged_in', 'username', 'user_id');
                 $this->session->set_flashdata('delete_account_message', 'Error Deleting Your Account, Please Try Again');
                 redirect('form/login');
+            }
+        }
+
+        public function delete_image($id)
+        {
+            // Session Check
+            if ($this->session->has_userdata('logged_in')) {
+                if ($this->session->logged_in === TRUE) {
+                    if (!$this->form_model->session_check($this->session->username, $this->session->user_id)){
+                        redirect('form/login');
+                    }
+                } else {
+                    redirect('form/login');
+                }
+            } else {
+                $this->session->set_flashdata('delete_account_message', 'Login To Delete Any Of Your Images');
+                redirect('form/login');
+            }
+
+            $this->load->model('form/user_gallery_model', 'user_gallery');
+
+            $image_data = $this->user_gallery->get_gallery_data('*', '', $id);
+
+            if ($image_data['user_id'] === $this->session->user_id) {
+                if ($this->user_gallery->delete_image($id)) {
+                    unlink($image_data['image_path']);
+                }
+                redirect('form/gallery');
+            } else {
+                self::logout();
             }
         }
 

@@ -1,7 +1,7 @@
         <div class="changing-buttons">
+            <?= anchor('form/gallery', 'Your Gallery', array('class' => 'logout-btn buttonBlue')); ?>
             <?= anchor('form/logout', 'Logout', array('class' => 'logout-btn buttonBlue')); ?>
             <?= anchor('#', 'Delete Account', array('class' => 'delete-btn buttonRed', 'id'=>'account_deletion_confirmation')); ?>
-            <?= anchor('form/gallery', 'Your Gallery', array('class' => 'logout-btn buttonBlue')); ?>
         </div>
 
         <!-- Confirm Delete Account -->
@@ -23,7 +23,7 @@
             <div class="group">
                 <div class="profile-pic">
                         
-                    <img alt="<?= $userdata['fullname']; ?>" title="<?= $userdata['fullname']; ?>" src="<?= $userdata['profile_pic']; ?>" id="profile-image">
+                    <img alt="<?= $userdata['fullname']; ?>" title="<?= $userdata['fullname']; ?>" src="<?= base_url($userdata['profile_pic']); ?>" id="profile-image">
                     <input id="profile-image-upload" class="hidden" type="file" name="profile_pic">
                         
                 </div>
