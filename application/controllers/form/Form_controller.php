@@ -125,7 +125,8 @@
                             $data['profile_pic'] .= $this->upload->data('file_name');
     
                         } else {
-                            echo $this->upload->display_errors();die;
+                            $data['profile_pic_error'] = $this->upload->display_errors();
+                            break;
                         }
                     } else {
                         $data['profile_pic'] .= 'default-profile.png';
@@ -213,9 +214,9 @@
                     $data['profile_pic'] = base_url($config['upload_path'].'/');
     
                     if ($_FILES['profile_pic']['error'] == 0) {
-                        $config['allowed_types']        = 'gif|jpg|png';
+                        $config['allowed_types']        = 'jpeg|jpg|png';
                         $config['max_size']             = 2048;
-                        $config['overwrite']             = FALSE;
+                        $config['overwrite']            = FALSE;
     
                         $this->load->library('upload', $config);
     
@@ -223,7 +224,8 @@
                             $data['profile_pic'] .= $this->upload->data('file_name');
     
                         } else {
-                            echo $this->upload->display_errors();die;
+                            $data['profile_pic_error'] = $this->upload->display_errors('<p class="error" style="text-align: center;">', '</p>');
+                            break;
                         }
                     } else {
                         $data['profile_pic'] = $this->form_model->get_userdata('profile_pic')['profile_pic'];

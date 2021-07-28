@@ -41,7 +41,7 @@
 
                 <label for="profile_pic">Profile Pic</label>
 
-                <?= form_error('profile_pic'); ?>
+                <?= empty($profile_pic_error) ? '' : $profile_pic_error; ?>
 
             </div>
 

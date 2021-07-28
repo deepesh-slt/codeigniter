@@ -28,7 +28,7 @@
                         
                 </div>
 
-                <?= form_error('profile_pic'); ?>
+                <?= empty($profile_pic_error) ? '' : $profile_pic_error; ?>
             </div>
 
             <div class="group">
