@@ -61,6 +61,18 @@ $route['form/delete_account/(:any)'] = 'form/form_controller/delete_account/$1';
 $route['form/delete_image/(:any)'] = 'form/form_controller/delete_image/$1';
 $route['form/(:any)'] = 'form/form_controller/$1';
 
+// Use API
+$route['use_api'] = 'use_api/fetch_api_controller/index';
+$route['use_api/(:any)'] = 'use_api/fetch_api_controller/$1';
+$route['use_api/(:any)/(:any)'] = 'use_api/fetch_api_controller/$1/$2';
+$route['use_api/(:any)/(:any)/(:any)'] = 'use_api/fetch_api_controller/$1/$2/$3';
+
+// API Generate
+$route['api'] = 'use_api/api_model_controller';
+$route['api/(:any)'] = 'use_api/api_model_controller/$1';
+$route['api/(:any)/(:any)'] = 'use_api/api_model_controller/$1/$2';
+$route['api/(:any)/(:any)/(:any)'] = 'use_api/api_model_controller/$1/$2/$3';
+
 // Pages controller Routing
 $route['pages/(:any)'] = 'pages/$1';
 $route['(:any)'] = 'pages/view/$1';
