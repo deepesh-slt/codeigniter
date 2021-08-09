@@ -97,4 +97,9 @@
                 echo 'Error Deleting Data';die;
             }
         }
+
+        public function ajax_datatable(){
+            // View Pages
+            $this->load->view('use_api/ajax_datatable');
+        }
     }

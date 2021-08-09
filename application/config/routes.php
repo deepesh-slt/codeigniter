@@ -73,6 +73,12 @@ $route['api/(:any)'] = 'use_api/api_model_controller/$1';
 $route['api/(:any)/(:any)'] = 'use_api/api_model_controller/$1/$2';
 $route['api/(:any)/(:any)/(:any)'] = 'use_api/api_model_controller/$1/$2/$3';
 
+// Datatable
+$route['datatable'] = 'datatable/datatable_controller';
+$route['datatable/(:any)'] = 'datatable/datatable_controller/$1';
+$route['datatable/(:any)/(:any)'] = 'datatable/datatable_controller/$1/$2';
+$route['datatable/(:any)/(:any)/(:any)'] = 'datatable/datatable_controller/$1/$2/$3';
+
 // Pages controller Routing
 $route['pages/(:any)'] = 'pages/$1';
 $route['(:any)'] = 'pages/view/$1';
