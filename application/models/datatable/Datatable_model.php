@@ -65,18 +65,6 @@
                         }
                     }
                 }
-
-                // for ($i=0; $i < count($this->input->post('columns')); $i++) { 
-
-                //     if($this->input->post('columns')[$i]['searchable'] == 'true') {
-                //         if($like_done === FALSE) {
-                //             $this->db->like($this->shown_columns[$i], $this->input->post('search')['value']);
-                //             $like_done = TRUE;
-                //         } else {
-                //             $this->db->or_like($this->shown_columns[$i], $this->input->post('search')['value']);
-                //         }
-                //     }
-                // }
             }
 
             // Individual Column Search
@@ -87,12 +75,6 @@
                         $this->db->like($this->shown_columns[$i], $column['search']['value']);
                     }
                 }
-
-                // for ($i=0; $i < count($this->input->post('columns')); $i++) { 
-                //     if($this->input->post('columns')[$i]['searchable'] == 'true' && $this->input->post('columns')[$i]['search']['value'] != '') {
-                //         $this->db->like($this->shown_columns[$i], $this->input->post('columns')[$i]['search']['value']);
-                //     }
-                // }
             }
         }
 
