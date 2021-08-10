@@ -14,6 +14,11 @@ $(document).ready(function () {
             return data;
         };
     };
+    
+    // $('#userdata tfoot th').each( function (i) {
+    //     var title = $('#userdata thead th').eq( $(this).index() ).text();
+    //     $(this).html( `<input type="text" class="form-control" placeholder="Search in ${title}" data-index="${i}" />` );
+    // } );
 
     var userdataTable = $(`#userdata`).DataTable({
         "processing": true,
@@ -23,36 +28,62 @@ $(document).ready(function () {
         "language": {
             "search": "Search Dealers:"
         },
+        "lengthMenu": [[10, 25, 50, 100, -1], [10, 25, 50, 100, "All"]],
         // order: [],
         "ajax": {
             "url": `${baseUrl}datatable/get`,
             "dataSrc" : 'data',
             "type": 'POST',
         },
-        // "columnDefs":[
-        //     {
-        //         "targets": [0,1,2,3,4],
-        //         "orderable": false,
-        //     }
-        // ],
-        "columns": [ 
-            {"data": 'id',},
-            {
-                "data": 'user_id',
-                // render: function(data,type,row){
-                //     if (type === 'filter'){
-                //         return row.userId;
-                //     } else {
-                //         return `${row.userId} - ${data}`;
-                //     }
-                // },
+        "columnDefs": [
+            { 
+                "searchable": false, 
+                "targets": [4,5] 
             },
+            {
+                "orderable": false,
+                "targets": [3,4,5] 
+            }
+        ],
+        "columns": [ 
+            { "data": 'id' },
+            { "data": 'user_id' },
             {
                 "data": 'title',
-                render: $.fn.dataTable.render.ellipsis( 30 ),
+                // "searchable": false,
+                "render": $.fn.dataTable.render.ellipsis( 30 )
             },
-            { "data": 'completed'},
+            { "data": 'completed' },
+            {
+                "data": 'id',
+                "render": function(data, type, row) {
+                    if(type === 'display'){
+                        return `<a href="${baseUrl}datatable/edit/${data}" class="btn btn-success">Edit</a>`;
+                    }
+
+                    return data;
+                }
+            },
+            {
+                "data": 'id',
+                "render": function(data, type, row) {
+                    if (type === 'display'){
+                        return `<a href="${baseUrl}datatable/delete/${data}" class="btn btn-danger">Delete</a>`;
+                    }
+
+                    return data;
+                }
+            }
         ],
         "scrollY" : 400,
+        // "scrollX": true,
+        "scrollCollapse": true,
+    });
+
+    // Event to search
+    $(`#userdata_filter`).on('input', 'input, select', function(){
+        userdataTable.column($(this).data('index'))
+        .search(this.value)
+        .draw();
     });
 });

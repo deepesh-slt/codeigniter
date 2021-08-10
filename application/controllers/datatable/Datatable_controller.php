@@ -620,28 +620,33 @@
         }
 
         public function get(){
-            $data = $this->datatable_model->get_datatable();
-            $output['data'] = [];
+            // $data = $this->datatable_model->get_datatable();
+            // $output['data'] = $this->datatable_model->get_datatable();
 
-            if (empty($data['error'])) {
-                foreach ($data as $row) {
-                    $row_data['id'] = $row->id;
-                    $row_data['user_id'] = $row->user_id;
-                    $row_data['title'] = $row->title;
-                    $row_data['completed'] = $row->completed;
+            // if (($data != FALSE) && is_array($data)) {
+            //     foreach ($data as $row) {
+            //         // $row_data['id'] = $row['id'];
+            //         // $row_data['user_id'] = $row['user_id'];
+            //         // $row_data['title'] = $row['title'];
+            //         // $row_data['completed'] = $row['completed'];
                     
-                    // array_push($output);
-                    $output['data'][] = $row_data;
-                }
-            } else {
-                $output['error'] = $data['error'];
-            }
+            //         // array_push($output);
+            //         $output['data'][] = $row;
+            //     }
+            // 
 
-            $output['draw'] = intval($this->input->post('draw'));
-            $output['recordsFiltered'] = $this->datatable_model->get_filtered_count();
-            $output['recordsTotal'] = $this->datatable_model->get_all_count();
+            // $output['draw'] = isset($_POST['draw']) ? intval($this->input->post('draw')) : 0;
+            // $output['recordsFiltered'] = intval($this->datatable_model->get_filtered_count());
+            // $output['recordsTotal'] = intval($this->datatable_model->get_all_count());
 
-            echo json_encode($output);
+            // echo json_encode($output);
+
+            echo json_encode(array(
+              'draw'              => isset($_POST['draw']) ? intval($this->input->post('draw')) : 0,
+              'recordsFiltered'   => intval($this->datatable_model->get_filtered_count()),
+              'recordsTotal'      => intval($this->datatable_model->get_all_count()),
+              'data'              => $this->datatable_model->get_datatable(),
+            ));
         }
 
         public function user_datatable(){

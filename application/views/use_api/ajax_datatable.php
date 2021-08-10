@@ -18,6 +18,37 @@
     <title>Ajax Datatable</title>
 </head>
 <body>
+
+        <section class="py-5 bg-light">
+            <div class="container">
+                <form action="" id="userdata_filter" class="row justify-content-center">
+                    <div class="col-12 col-sm-6 col-md-4 col-xl-3 col-xxl-2">
+                        <div class="form-group mb-3">
+                            <input type="text" class="form-control" placeholder="Search in Id" data-index="0">
+                        </div>
+                    </div>
+                    <div class="col-12 col-sm-6 col-md-4 col-xl-3 col-xxl-2">
+                        <div class="form-group mb-3">
+                            <input type="text" class="form-control" placeholder="Search in User id" data-index="1">
+                        </div>
+                    </div>
+                    <div class="col-12 col-sm-6 col-md-4 col-xl-3 col-xxl-2">
+                        <div class="form-group mb-3">
+                            <input type="text" class="form-control" placeholder="Search in Title" data-index="2">
+                        </div>
+                    </div>
+                    <div class="col-12 col-sm-6 col-md-4 col-xl-3 col-xxl-2">
+                        <div class="form-group mb-3">
+                            <select id="" class="form-control" data-index="3">
+                                <option value="">--Select--</option>
+                                <option value="true">True</option>
+                                <option value="false">False</option>
+                            </select>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </section>
     
     <div class="section py-5">
         <div class="container">
@@ -28,10 +59,20 @@
                         <th>User Id</th>
                         <th>Title</th>
                         <th>Completed</th>
+                        <th>Edit</th>
+                        <th>Delete</th>
                     </tr>
                 </thead>
                 <tbody>
                 </tbody>
+                <tfoot>
+                    <th></th>
+                    <th></th>
+                    <th></th>
+                    <th></th>
+                    <th></th>
+                    <th></th>
+                </tfoot>
             </table>
         </div>
     </div>
