@@ -78,16 +78,9 @@ $(document).ready(function () {
             }
         ],
         "scrollY" : 400,
-        "buttons": [
-            {
-                extend: 'csv',
-                text: 'Copy all data',
-                exportOptions: {
-                    modifier: {
-                        search: 'none'
-                    }
-                }
-            }
+        dom: 'Bflrtip',
+        buttons: [
+            'copy', 'csv', 'excel', 'pdf', 'print'
         ],
         // "responsive": {
         //     breakpoints:[

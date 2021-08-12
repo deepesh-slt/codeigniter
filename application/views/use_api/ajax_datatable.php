@@ -9,6 +9,7 @@
     <link rel="stylesheet" href="<?= base_url('assets/css/bootstrap.min.css'); ?>">
     <link rel="stylesheet" href="<?= base_url('assets/css/dataTables.bootstrap5.min.css'); ?>">
     <link rel="stylesheet" href="<?= base_url('assets/css/responsive.bootstrap5.min.css'); ?>">
+    <link rel="stylesheet" href="<?= base_url('assets/css/buttons.dataTables.min.css'); ?>">
     <link rel="stylesheet" href="<?= base_url('assets/css/buttons.bootstrap5.min.css'); ?>">
     <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
 
@@ -94,6 +95,9 @@
     <script src="<?= base_url('assets/js/dataTables.responsive.min.js'); ?>"></script>
     <script src="<?= base_url('assets/js/buttons.dataTables.min.js'); ?>"></script>
     <script src="<?= base_url('assets/js/dataTables.buttons.min.js'); ?>"></script>
+    <script src="<?= base_url('assets/js/jszip.min.js'); ?>"></script>
+    <script src="<?= base_url('assets/js/pdfmake.min.js'); ?>"></script>
+    <script src="<?= base_url('assets/js/vfs_fonts.js'); ?>"></script>
     <script src="<?= base_url('assets/js/buttons.html5.min.js'); ?>"></script>
     <script src="<?= base_url('assets/js/buttons.print.min.js'); ?>"></script>
     <script src="<?= base_url('assets/js/dataTables.bootstrap5.min.js'); ?>"></script>

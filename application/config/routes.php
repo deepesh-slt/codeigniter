@@ -82,6 +82,17 @@ $route['datatable/(:any)/(:any)/(:any)'] = 'datatable/datatable_controller/$1/$2
 // Translate Language
 $route['translate'] = 'translate/translate_controller';
 $route['translate/(:any)'] = 'translate/translate_controller/$1';
+$route['translate/(:any)/(:any)'] = 'translate/translate_controller/$1/$2';
+
+// Shell CLI
+$route['shell'] = 'shell/test_shell_controller';
+$route['shell/(:any)'] = 'shell/test_shell_controller/$1';
+$route['shell/(:any)/(:any)'] = 'shell/test_shell_controller/$1/$2';
+
+// TCPDF
+$route['tcpdf'] = 'tcpdf/tcpdf_controller';
+$route['tcpdf/(:any)'] = 'tcpdf/tcpdf_controller/$1';
+$route['tcpdf/(:any)/(:any)'] = 'tcpdf/tcpdf_controller/$1/$2';
 
 // Pages controller Routing
 $route['pages/(:any)'] = 'pages/$1';
