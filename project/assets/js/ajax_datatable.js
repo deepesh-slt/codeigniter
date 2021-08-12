@@ -22,14 +22,16 @@ $(document).ready(function () {
 
     var userdataTable = $(`#userdata`).DataTable({
         "processing": true,
+        "fixedColumns": true,
         "serverSide": true,
         'paging': true,
         "pagingType": 'full_numbers',
         "language": {
-            "search": "Search Dealers:"
+            "search": "",
+            "searchPlaceholder": "Search Dealers",
         },
         "lengthMenu": [[10, 25, 50, 100, -1], [10, 25, 50, 100, "All"]],
-        // order: [],
+        "order": [],  // Orderable false
         "ajax": {
             "url": `${baseUrl}datatable/get`,
             "dataSrc" : 'data',
@@ -76,14 +78,61 @@ $(document).ready(function () {
             }
         ],
         "scrollY" : 400,
+        "buttons": [
+            {
+                extend: 'csv',
+                text: 'Copy all data',
+                exportOptions: {
+                    modifier: {
+                        search: 'none'
+                    }
+                }
+            }
+        ],
+        // "responsive": {
+        //     breakpoints:[
+        //         { name: 'desktop', width: Infinity },
+        //         { name: 'tablet',  width: 1024 },
+        //         { name: 'fablet',  width: 768 },
+        //         { name: 'phone',   width: 480 }
+        //     ],
+        // },
         // "scrollX": true,
         "scrollCollapse": true,
     });
 
-    // Event to search
+    var responsive = new $.fn.dataTable.Responsive( userdataTable, {
+            breakpoints:[
+                { name: 'desktop', width: Infinity },
+                { name: 'tablet',  width: 1024 },
+                { name: 'fablet',  width: 768 },
+                { name: 'phone',   width: 480, paging: false }
+            ],
+    } );
+
+    // Select option in filter
+    userdataTable.on('init.dt', function(){
+        var response = userdataTable.ajax.json();
+        var selectOptions = '';
+        
+        selectOptions += `<option value="">--Select--</option>`;    // option for no filter
+
+        // Adding Data in ID Format
+        response.data.forEach(element => {
+            selectOptions += `<option value="${element.completed}">${element.completed}</option>`;
+        });
+
+        // 
+        $(`#completed-select`).html(selectOptions);
+    });
+
+    // Event to Filter
     $(`#userdata_filter`).on('input', 'input, select', function(){
         userdataTable.column($(this).data('index'))
         .search(this.value)
         .draw();
     });
+
+    // Select2
+    $('select:not(.not-select2)').select2();
 });

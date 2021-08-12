@@ -54,7 +54,7 @@
             // Search in selected columns
             if(!empty($this->input->post('search')['value'])) {
                 $like_done = FALSE;
-
+                $this->db->group_start();
                 foreach ($this->input->post('columns') as $i => $column) {
                     if($column['searchable'] == 'true') {
                         if($like_done === FALSE) {
@@ -65,6 +65,7 @@
                         }
                     }
                 }
+                $this->db->group_end();
             }
 
             // Individual Column Search

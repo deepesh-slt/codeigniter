@@ -8,6 +8,24 @@
     <!-- CSS Linking -->
     <link rel="stylesheet" href="<?= base_url('assets/css/bootstrap.min.css'); ?>">
     <link rel="stylesheet" href="<?= base_url('assets/css/dataTables.bootstrap5.min.css'); ?>">
+    <link rel="stylesheet" href="<?= base_url('assets/css/responsive.bootstrap5.min.css'); ?>">
+    <link rel="stylesheet" href="<?= base_url('assets/css/buttons.bootstrap5.min.css'); ?>">
+    <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
+
+    <style>
+        .select2-container .select2-selection--single, .select2-container--default .select2-selection--single .select2-selection__arrow{
+            height: 38px;
+        }
+        .select2-container--default .select2-selection--single .select2-selection__rendered{
+            line-height: 35px;
+        }
+        .form-control:focus, .page-link:focus, .btn-check:active+.btn:focus, .btn-check:checked+.btn:focus, .btn.active:focus, .btn:active:focus, .show>.btn.dropdown-toggle:focus, .btn:focus{
+            box-shadow: none;
+        }
+        .table{
+            vertical-align: middle;
+        }
+    </style>
 
     <style>
         .col-sm-12{
@@ -21,7 +39,7 @@
 
         <section class="py-5 bg-light">
             <div class="container">
-                <form action="" id="userdata_filter" class="row justify-content-center">
+                <form action="" id="userdata_filter" class="row row-cols justify-content-center">
                     <div class="col-12 col-sm-6 col-md-4 col-xl-3 col-xxl-2">
                         <div class="form-group mb-3">
                             <input type="text" class="form-control" placeholder="Search in Id" data-index="0">
@@ -39,10 +57,7 @@
                     </div>
                     <div class="col-12 col-sm-6 col-md-4 col-xl-3 col-xxl-2">
                         <div class="form-group mb-3">
-                            <select id="" class="form-control" data-index="3">
-                                <option value="">--Select--</option>
-                                <option value="true">True</option>
-                                <option value="false">False</option>
+                            <select id="completed-select" class="form-control" data-index="3">
                             </select>
                         </div>
                     </div>
@@ -52,7 +67,7 @@
     
     <div class="section py-5">
         <div class="container">
-            <table id="userdata" class="table table-striped table-bordered text-center bg-white">
+            <table id="userdata" class="table table-striped table-bordered text-center bg-white responsive ">
                 <thead>
                     <tr class="table-success">
                         <th>Id</th>
@@ -65,14 +80,6 @@
                 </thead>
                 <tbody>
                 </tbody>
-                <tfoot>
-                    <th></th>
-                    <th></th>
-                    <th></th>
-                    <th></th>
-                    <th></th>
-                    <th></th>
-                </tfoot>
             </table>
         </div>
     </div>
@@ -84,7 +91,13 @@
     <script src="<?= base_url('assets/js/jquery.js'); ?>"></script>
     <script src="<?= base_url('assets/js/bootstrap.bundle.min.js'); ?>"></script>
     <script src="<?= base_url('assets/js/jquery.dataTables.min.js'); ?>"></script>
+    <script src="<?= base_url('assets/js/dataTables.responsive.min.js'); ?>"></script>
+    <script src="<?= base_url('assets/js/buttons.dataTables.min.js'); ?>"></script>
+    <script src="<?= base_url('assets/js/dataTables.buttons.min.js'); ?>"></script>
+    <script src="<?= base_url('assets/js/buttons.html5.min.js'); ?>"></script>
+    <script src="<?= base_url('assets/js/buttons.print.min.js'); ?>"></script>
     <script src="<?= base_url('assets/js/dataTables.bootstrap5.min.js'); ?>"></script>
     <script src="<?= base_url('assets/js/ajax_datatable.js'); ?>"></script>
+    <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
 </body>
 </html>

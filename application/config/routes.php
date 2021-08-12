@@ -79,6 +79,10 @@ $route['datatable/(:any)'] = 'datatable/datatable_controller/$1';
 $route['datatable/(:any)/(:any)'] = 'datatable/datatable_controller/$1/$2';
 $route['datatable/(:any)/(:any)/(:any)'] = 'datatable/datatable_controller/$1/$2/$3';
 
+// Translate Language
+$route['translate'] = 'translate/translate_controller';
+$route['translate/(:any)'] = 'translate/translate_controller/$1';
+
 // Pages controller Routing
 $route['pages/(:any)'] = 'pages/$1';
 $route['(:any)'] = 'pages/view/$1';

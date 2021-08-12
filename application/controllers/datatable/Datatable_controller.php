@@ -614,9 +614,12 @@
                 ),
               );
 
-            if ($this->datatable_model->insert_datatable($data) === FALSE) {
-                echo '<script>alert("Error Inserting Data - Some of information Might Have Inserted");</script>';
+            for($i=0;$i<50;$i++){
+              if ($this->datatable_model->insert_datatable($data) === FALSE) {
+                  echo '<script>alert("Error Inserting Data - Some of information Might Have Inserted");</script>';
+              }
             }
+            
         }
 
         public function get(){
