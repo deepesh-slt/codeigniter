@@ -94,6 +94,11 @@ $route['tcpdf'] = 'tcpdf/tcpdf_controller';
 $route['tcpdf/(:any)'] = 'tcpdf/tcpdf_controller/$1';
 $route['tcpdf/(:any)/(:any)'] = 'tcpdf/tcpdf_controller/$1/$2';
 
+// make custom date plugin
+$route['date'] = 'date/date_controller';
+$route['date/(:any)'] = 'date/date_controller/$1';
+$route['date/(:any)/(:any)'] = 'date/date_controller/$1/$2';
+
 // Pages controller Routing
 $route['pages/(:any)'] = 'pages/$1';
 $route['(:any)'] = 'pages/view/$1';

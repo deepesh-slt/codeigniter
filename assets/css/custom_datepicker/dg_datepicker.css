@@ -1,0 +1,135 @@
+.dg {
+  /* Inner CSS */
+}
+
+.dg-datepicker {
+  /* Outer CSS */
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  /* Global dg_datepicker UI CSS */
+}
+
+.dg-datepicker-container {
+  width: 100%;
+  max-width: 350px;
+  background: #fff;
+  border-radius: 0.25rem;
+  overflow: hidden;
+  -webkit-box-shadow: 0 1px 2px 1px rgba(0, 0, 0, 0.25);
+          box-shadow: 0 1px 2px 1px rgba(0, 0, 0, 0.25);
+}
+
+.dg-datepicker p {
+  margin: 0rem;
+}
+
+.dg-header:not(.inactive) {
+  background: #018ee0;
+  color: #fff;
+  width: 100%;
+  text-align: center;
+  padding: 0.5rem;
+  margin-bottom: 0.5rem;
+}
+
+.dg-header-year {
+  opacity: 0.7;
+  font-size: 1.25rem;
+}
+
+.dg-header-date-and-day {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  font-size: 1.5rem;
+}
+
+.dg-select {
+  position: relative;
+  padding: 0.5rem 36px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  margin-bottom: 0.25rem;
+}
+
+.dg-select-nav {
+  background: transparent;
+  border: none;
+  position: absolute;
+  top: 50%;
+  -webkit-transform: translateY(-50%);
+          transform: translateY(-50%);
+  width: 32px;
+  height: 32px;
+  padding: 2px 6px;
+}
+
+.dg-select-nav-prev {
+  left: 0rem;
+}
+
+.dg-select-nav-next {
+  right: 0rem;
+}
+
+.dg-select select {
+  background: transparent;
+  border: none;
+  border-bottom: 1px solid rgba(88, 88, 88, 0.7);
+  min-width: 75px;
+  padding: 0rem 0.25rem 0.25rem;
+}
+
+.dg-select select:focus {
+  outline: 0;
+}
+
+.dg-select-year {
+  margin-right: 1rem;
+}
+
+.dg-table-wrapper {
+  padding: 0.5rem;
+  margin-bottom: 0.5rem;
+  text-align: center;
+}
+
+.dg-table {
+  width: 100%;
+}
+
+.dg-table thead th {
+  opacity: 0.9;
+  line-height: 2;
+  width: 14%;
+  min-width: 48px;
+}
+
+.dg-date {
+  padding: 10px 0rem;
+  border-radius: 50%;
+  cursor: pointer;
+}
+
+.dg-date-active, .dg-date:hover {
+  background: #018ee0;
+  color: #fff;
+  -webkit-box-shadow: 0 5px 11px 0 rgba(0, 0, 0, 0.18), 0 4px 15px 0 rgba(0, 0, 0, 0.15);
+          box-shadow: 0 5px 11px 0 rgba(0, 0, 0, 0.18), 0 4px 15px 0 rgba(0, 0, 0, 0.15);
+  -webkit-transform: scale(0.9);
+          transform: scale(0.9);
+}
+/*# sourceMappingURL=dg_datepicker.css.map */

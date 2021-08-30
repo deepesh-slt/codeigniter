@@ -92,16 +92,24 @@
     <script src="<?= base_url('assets/js/jquery.js'); ?>"></script>
     <script src="<?= base_url('assets/js/bootstrap.bundle.min.js'); ?>"></script>
     <script src="<?= base_url('assets/js/jquery.dataTables.min.js'); ?>"></script>
+
     <script src="<?= base_url('assets/js/dataTables.responsive.min.js'); ?>"></script>
     <script src="<?= base_url('assets/js/buttons.dataTables.min.js'); ?>"></script>
     <script src="<?= base_url('assets/js/dataTables.buttons.min.js'); ?>"></script>
+
     <script src="<?= base_url('assets/js/jszip.min.js'); ?>"></script>
     <script src="<?= base_url('assets/js/pdfmake.min.js'); ?>"></script>
     <script src="<?= base_url('assets/js/vfs_fonts.js'); ?>"></script>
+
     <script src="<?= base_url('assets/js/buttons.html5.min.js'); ?>"></script>
     <script src="<?= base_url('assets/js/buttons.print.min.js'); ?>"></script>
+    
     <script src="<?= base_url('assets/js/dataTables.bootstrap5.min.js'); ?>"></script>
+
+    <!-- Custom -->
     <script src="<?= base_url('assets/js/ajax_datatable.js'); ?>"></script>
+
+    <!-- Select2 -->
     <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
 </body>
 </html>

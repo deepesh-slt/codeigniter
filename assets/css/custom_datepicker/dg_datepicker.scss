@@ -1,0 +1,144 @@
+$primary : #018ee0;
+$primary-color : #fff;
+$secondary : #585858;
+
+.dg{
+    &-datepicker{
+        
+        /* Outer CSS */
+        position: fixed;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        // background: rgba(3,3,3,0.3);
+        display: flex;
+    
+        &-container{
+            // position: absolute;
+            // top: 50%;
+            // left: 50%;
+            width: 100%;
+            max-width: 350px;
+            // transform: translate(-50%, -50%);
+            background: #fff;
+            border-radius: 0.25rem;
+            overflow: hidden;
+            box-shadow: 0 1px 2px 1px rgba(0, 0, 0, 0.25);
+        }
+        
+        /* Global dg_datepicker UI CSS */
+        p{
+            margin: 0rem;
+        }
+
+        /* CSS for customized input[type=date] */
+        &-date-input{
+            position: relative;
+        }
+    }
+
+    /* Inner CSS */
+
+    // Header
+    &-header{
+        &:not(.inactive){
+            background: $primary;
+            color: $primary-color;
+            width: 100%;
+            text-align: center;
+            padding: 0.5rem;
+            margin-bottom: 0.5rem;
+        }
+
+        // Inside dg-header class
+        &-year{
+            opacity: 0.7;
+            font-size: 1.25rem;
+            // margin-bottom: 0.25rem;
+        }
+    
+        &-date-and-day{
+            display: flex;
+            justify-content: center;
+            font-size: 1.5rem;
+        }
+    }
+
+    // Selector
+    &-select{
+        position: relative;
+        padding: 0.5rem 36px;
+        display: flex;
+        justify-content: center;
+        margin-bottom: 0.25rem;
+
+        &-nav{
+            background: transparent;
+            border: none;
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 32px;
+            height: 32px;
+            padding: 2px 6px;
+
+            &-prev{
+                left: 0rem;
+            }
+
+            &-next{
+                right: 0rem;
+            }
+        }
+
+        select{
+            background: transparent;
+            border: none;
+            border-bottom: 1px solid rgba($color: $secondary, $alpha: 0.7);
+            min-width: 75px;
+            padding: 0rem 0.25rem 0.25rem;
+
+            &:focus{
+                outline: 0;
+            }
+        }
+
+        &-year{
+            margin-right: 1rem;
+        }
+    }
+
+    // Table
+    &-table-wrapper{
+        padding: 0.5rem;
+        margin-bottom: 0.5rem;
+        text-align: center;
+    }
+
+    &-table{
+        width: 100%;
+
+        thead{
+            th{
+                opacity: 0.9;
+                line-height: 2;
+                width: 14%;
+                min-width: 48px;
+            }
+        }
+    }
+
+    &-date{
+        padding: 10px 0rem;
+        border-radius: 50%;
+        cursor: pointer;
+
+        &-active, &:hover{
+            background: $primary;
+            color: $primary-color;
+            box-shadow: 0 5px 11px 0 rgba(0, 0, 0, 0.18), 0 4px 15px 0 rgba(0, 0, 0, 0.15);
+            transform: scale(0.9);
+        }
+    }
+}
