@@ -8,9 +8,12 @@
             $this->load->database();
         }
 
-        public function get_userdata($id = FALSE){
+        public function get_userdata($id = NULL){
             $this->db->select('*');
             $this->db->order_by('id', 'DESC');
+            if($id !== NULL) {
+                $this->db->where("id =", $id);
+            }
 
             $query = $this->db->get($this->tb_name);
             return $query->result_array();
@@ -19,7 +22,7 @@
 
         public function create_user($data){
             if ($this->db->insert($this->tb_name, $data)) {
-                return TRUE;
+                return $data;
             } else {
                 return FALSE;
             }

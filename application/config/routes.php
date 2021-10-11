@@ -69,6 +69,7 @@ $route['use_api/(:any)/(:any)/(:any)'] = 'use_api/fetch_api_controller/$1/$2/$3'
 
 // API Generate
 $route['api'] = 'use_api/api_model_controller';
+$route['api/(:num)'] = 'use_api/api_model_controller/index/$1';
 $route['api/(:any)'] = 'use_api/api_model_controller/$1';
 $route['api/(:any)/(:any)'] = 'use_api/api_model_controller/$1/$2';
 $route['api/(:any)/(:any)/(:any)'] = 'use_api/api_model_controller/$1/$2/$3';
