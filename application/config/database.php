@@ -94,3 +94,5 @@ $db['default'] = array(
 	'failover' => array(),
 	'save_queries' => TRUE
 );
+
+// remotemysql.com -> username = dgupta@slt.work -> password -> slt-deepesh@14
