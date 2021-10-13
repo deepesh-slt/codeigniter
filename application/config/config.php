@@ -23,7 +23,15 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 | a PHP script and you can easily do that on your own.
 |
 */
-$config['base_url'] = 'http://localhost/codeigniter/';
+
+$appSettings = json_decode(file_get_contents(FCPATH.'appsettings.json'), true);
+
+
+$config['base_url'] = $appSettings['BASE_URL'];
+$config['db_host'] = $appSettings['DATABASE_HOSTNAME'];
+$config['db_username'] = $appSettings['DATABASE_USERNAME'];
+$config['db_password'] = $appSettings['DATABASE_PASSWORD'];
+$config['db_name'] = $appSettings['DATABASE_NAME'];
 
 /*
 |--------------------------------------------------------------------------
